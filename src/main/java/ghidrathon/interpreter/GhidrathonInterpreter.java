@@ -102,7 +102,14 @@ public class GhidrathonInterpreter {
 		} catch (FileNotFoundException e) {
 			
 			// whoops try Windows
-			nativeJep = Application.getOSFile(extname, "jep.dll");
+            try {
+
+                nativeJep = Application.getOSFile(extname, "jep.dll");
+            } catch (FileNotFoundException ee) {
+
+                nativeJep = Application.getOSFile(extname, "libjep.jnilib");
+
+            }
 
 		}
 		
